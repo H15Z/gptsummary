@@ -35,3 +35,23 @@ https://www.kaggle.com/datasets/fabiochiusano/medium-articles
 https://platform.openai.com/account/api-keys
 
 create a `.cmd.yml` file and update with Open AI  API key
+
+3. Build Binary
+
+```console 
+go mod tidy
+go build
+
+```
+
+## STREAMING DATA ENRICHMENT ##
+
+c - limit number of articles to stream (150k total)
+
+t - numer of enrichment actors to initialize (threads)
+
+```console
+
+./gptsummary stream -c 3 -t 3
+
+```

@@ -1,7 +1,6 @@
 package actors
 
 import (
-	"fmt"
 	"log"
 	"time"
 
@@ -62,13 +61,12 @@ func (l *LoaderActor) Recieve(m ActorMsg) {
 	)
 
 	dl.StreamData(l.SendForEnriching) // Pass Callback into data streamer
-	l.Monitor()
+	l.MonitorEnrichers()
 
 	log.Println("DATA LOADER ACTOR FINISHED:", time.Since(start))
 }
 
-func (l *LoaderActor) Monitor() {
-	// Monitor monitor and stop enrichers
+func (l *LoaderActor) MonitorEnrichers() {
 	for {
 		//  CHECK IF FINISHED PROCESSING AND UPDATING
 		if l.DataEnricher.MessageCount() == 0 && !l.DataEnricher.IsActive() {
@@ -79,25 +77,16 @@ func (l *LoaderActor) Monitor() {
 }
 
 func (l *LoaderActor) SendForEnriching(article models.Article) {
+	l.Count += 1
 
+	// TODO return a bool to exit out of CSV streaming for better performance
 	if l.Count > l.Limit {
 		return
 	}
-
-	PrintArticleTitle(article)
-
-	l.Count += 1
 
 	l.Actor.SendMsg(l.DataEnricher, ActorMsg{
 		Msg: EnrichMsg{
 			Article: article,
 		},
 	})
-}
-
-// Use for testing
-func PrintArticleTitle(article models.Article) {
-	fmt.Println(article.Title)
-	fmt.Println("---------------------------------------")
-
 }
