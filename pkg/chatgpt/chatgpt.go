@@ -51,7 +51,7 @@ func (g GPT) QueryGPT(prompt string) models.Response {
 		return models.Response{}
 	}
 
-	log.Println("models.Response:", string(response_body))
+	// log.Println("models.Response:", string(response_body)) //DEBUG
 
 	return processResponse(response_body)
 }

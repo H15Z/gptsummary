@@ -8,7 +8,17 @@ import (
 	"github.com/H15Z/gptsummary/domain/models"
 )
 
-func LoadCSV() {
+type CSVLoader struct{}
+
+func NewCSVLoader() *CSVLoader {
+	return &CSVLoader{}
+}
+
+func (c CSVLoader) StreamData(callback func(models.Article)) {
+	LoadCSV(callback)
+}
+
+func LoadCSV(callback func(models.Article)) {
 	// Open the CSV file
 	file, err := os.Open("data/medium_articles.csv")
 	if err != nil {
@@ -21,26 +31,26 @@ func LoadCSV() {
 	reader := csv.NewReader(file)
 
 	// Read all CSV records
-	var rows []models.Article
+	header_skipped := false
+
 	for {
 		record, err := reader.Read()
 		if err != nil {
 			break // Reached the end of the file
 		}
 
-		//TODO TRIGGER CALLBACK METHOD EACH TIME A ROW IS PROCESSED
+		if !header_skipped {
+			header_skipped = true
+			continue
+		}
+
 		row := models.Article{
 			Title: record[0],
 			Text:  record[1],
 		}
 
-		rows = append(rows, row)
+		callback(row)
+
 	}
 
-	// Print the parsed data
-	for _, row := range rows {
-		fmt.Printf("Title: %s\n", row.Title)
-		fmt.Printf("Text: %s\n", row.Text)
-		fmt.Println("---------")
-	}
 }

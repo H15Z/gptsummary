@@ -8,6 +8,7 @@ This POC project specifically created to demonstrates the following concepts:
 * Custom Actor Model of Concurrency implementation
 * High data throughput to allow for processing and enriching data at scale
 * Leveraging Chat GPT API to enrich data/transform data
+* Fan-Out Fan-In concurrency pattern implemented using Actor Model
 
 ### How it Works! ###
 
@@ -24,9 +25,13 @@ Hacked together over a Sunday hence far from ideal:
 
 
 ## INSTALLATION ##
-** Medium articles source: Kaggle
 
-Download and extract to `data/` folder:
+1. Download and extract to `data/` folder:
 
 https://www.kaggle.com/datasets/fabiochiusano/medium-articles
 
+2. Get an API key from OPEN AI:
+
+https://platform.openai.com/account/api-keys
+
+create a `.cmd.yml` file and update with Open AI  API key
