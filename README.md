@@ -22,6 +22,8 @@ Hacked together over a Sunday hence far from ideal:
 * Test coverage could be significantly better
 * Many shortcuts taken i.e. `TODO` comments explaining how code could be improved
 * Missing CI/CD
+* Timeouts and better error handling needed
+* Need an output Actor to log nicely
 
 
 ## INSTALLATION ##
@@ -48,7 +50,7 @@ go build
 
 c - limit number of articles to stream (150k total)
 
-t - numer of enrichment actors to initialize (threads)
+t - numer of enrichment actors to initialize (threads) - keep this below 10 not to hit API Rate limits
 
 ```console
 

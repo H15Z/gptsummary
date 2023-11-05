@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/H15Z/gptsummary/domain/models"
 	"github.com/spf13/viper"
@@ -35,7 +36,9 @@ func (g GPT) QueryGPT(prompt string) models.Response {
 	req.Header.Set("Authorization", "Bearer "+apiKey)
 	req.Header.Set("Content-Type", "application/json")
 
-	client := &http.Client{}
+	client := &http.Client{
+		Timeout: 120 * time.Second,
+	}
 
 	response, err := client.Do(req)
 	if err != nil {
