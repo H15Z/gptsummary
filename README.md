@@ -12,7 +12,7 @@ This POC project specifically created to demonstrates the following concepts:
 
 ### How it Works! ###
 
-Data is streamed in from a CSV file (alternative data sources could be used such as DB, storge buckets, webscraping etc..). The Articles in the CSV file are then used to generated a Chat GPT prompt. OPEN AI API is used to get responses from Chat GPT and data is enriched with a summary, sentiment and category. Final Actor is not implemented but could write data to database etc.
+Data is streamed in from a CSV file (alternative data sources could be used such as DB, storge buckets, webscraping etc..). The Articles in the CSV file are then used to generate a Chat GPT prompt. OPEN AI API is used to get responses from Chat GPT and data is enriched with a summary, sentiment and category. Final Actor is not implemented but could write data to database etc.
 
 ![Architecture](arch.png)
 
