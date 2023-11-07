@@ -36,6 +36,15 @@ func NewEnricherActor(super *Supervisor, threads int) *EnricherActor {
 // concurrent actor loop
 func (l *EnricherActor) Recieve(m ActorMsg) {
 
+	// TODO optionally add context to recieve method to control things like timeouts
+
+	// recover API enrichment errors (timeout etc...)
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered. Error:\n", r)
+		}
+	}()
+
 	enrich_msg, ok := m.Msg.(EnrichMsg)
 
 	if !ok {

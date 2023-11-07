@@ -37,7 +37,7 @@ func (g GPT) QueryGPT(prompt string) models.Response {
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{
-		Timeout: 120 * time.Second,
+		Timeout: 30 * time.Second,
 	}
 
 	response, err := client.Do(req)

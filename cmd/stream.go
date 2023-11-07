@@ -10,14 +10,14 @@ var syncjobCmd = &cobra.Command{
 	Short: "Streams and Enriches Articles ",
 	Long:  `Streams article data from CSV file uses `,
 	Run: func(cmd *cobra.Command, args []string) {
-		// runJob(args[0], args[1])
 
 		count, _ := cmd.Flags().GetInt("count")
 		threads, _ := cmd.Flags().GetInt("threads")
 
+		// TODO implement dry_run option
 		// if dry_run {
 		// 	log.Println("--------------------------------------")
-		// 	log.Println("====== DRY RUN - NO API UPDATES ======")
+		// 	log.Println("====== DRY RUN - NO API READS ======")
 		// 	log.Println("--------------------------------------")
 		// }
 

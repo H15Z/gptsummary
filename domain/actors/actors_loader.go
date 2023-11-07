@@ -39,8 +39,6 @@ func (l *LoaderActor) Recieve(m ActorMsg) {
 	defer l.ActorStop()
 
 	start := time.Now()
-	log.Println("LOADER MSG RECIEVED :", m)
-
 	load_msg, ok := m.Msg.(LoaderMsg)
 
 	if !ok {

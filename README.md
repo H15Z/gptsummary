@@ -23,7 +23,7 @@ Hacked together over a Sunday hence far from ideal:
 * Many shortcuts taken i.e. `TODO` comments explaining how code could be improved
 * Missing CI/CD
 * Timeouts and better error handling needed
-* Need an output Actor to log nicely
+* Need an output Actor to log output nicely (ie in order when many threads are used)
 
 
 ## INSTALLATION ##
@@ -50,10 +50,20 @@ go build
 
 c - limit number of articles to stream (150k total)
 
-t - numer of enrichment actors to initialize (threads) - keep this below 10 not to hit API Rate limits
+t - numer of enrichment actors to initialize (threads) - keep this low not to hit API Rate limits
 
 ```console
 
 ./gptsummary stream -c 3 -t 3
 
+```
+
+## DOCKER ##
+
+Incase you dont have Golang installed the application can be ran using docker:
+
+```console
+docker build -t gptsummary .
+
+docker run -it --rm gptsummary 
 ```
