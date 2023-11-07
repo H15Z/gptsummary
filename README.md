@@ -17,6 +17,28 @@ Data is streamed in from a CSV file (alternative data sources could be used such
 ![Architecture](arch.png)
 
 
+Example output:
+
+```
+=======================
+Title: Mental Note Vol. 24
+Summary: Appreciation for readers and writers in destigmatizing mental illness, top stories from last week, personal reflections on loss, self-compassion, and the impact of the pandemic on mental health.
+Sentiment: positive
+Category: Media
+=======================
+Title: Mind Your Nose
+Summary: Smell training can strengthen neural pathways and increase brain plasticity. Ongoing regeneration of olfactory neurons in the nose allows us to detect smells throughout our lives. Intense olfactory training for six weeks leads to structural changes in the brain.
+Sentiment: positive
+Category: Health & Wellness
+=======================
+Title: Your Brain On Coronavirus
+Summary: The impact of the coronavirus pandemic and isolation on the brain includes blood clotting, stroke, and worsening mental health. Long-haulers continue to experience symptoms months later.
+Sentiment: neutral
+Category: Health
+=======================
+
+```
+
 ### Limitations ###
 
 Hacked together over a Sunday hence far from ideal:
