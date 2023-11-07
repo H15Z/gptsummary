@@ -67,5 +67,5 @@ Incase you dont have Golang installed the application can be ran using docker:
 ```console
 docker build -t gptsummary .
 
-docker run -it --rm gptsummary ./gptsummary stream -c 20 -t 1
+docker run -it --rm gptsummary
 ```
